@@ -1,0 +1,14 @@
+.container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.bot {
+  height: 80%;
+  width: 95%;
+  margin: 0 auto;
+  display: flex;
+  position: relative;
+}

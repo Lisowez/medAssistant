@@ -36,8 +36,8 @@ const RegisterPage = () => {
       <form
         className={style.form}
         onSubmit={handleSubmit((data) => {
-          localStorage.setItem("userInfo", JSON.stringify(data));
-          if (localStorage.getItem("userInfo") !== null)
+          localStorage.setItem("user", JSON.stringify(data));
+          if (localStorage.getItem("user") !== null)
             navigate("../app/firstTest");
         })}
       >

@@ -1,6 +1,7 @@
 import { useForm } from "react-hook-form";
 import style from "./FirstTestPage.module.css";
 import { useEffect, useLayoutEffect, useState } from "preact/hooks";
+import { useNavigate } from "react-router-dom";
 
 export interface IData {
   gender: string;
@@ -17,9 +18,9 @@ interface IError {
 export const FirstTestPage = () => {
   const { register, handleSubmit } = useForm({ mode: "onChange" });
   const [name, setName] = useState("");
-
+  const navigate = useNavigate();
   useLayoutEffect(() => {
-    const data = localStorage.getItem("userInfo");
+    const data = localStorage.getItem("user");
     if (data) {
       const name = JSON.parse(data).login;
       setName(name);
@@ -30,11 +31,12 @@ export const FirstTestPage = () => {
 
   function onSubmit(data: IData) {
     if (data.gender && data.age > 0 && data.weight > 0 && data.height > 0) {
+      localStorage.setItem("userInfo", JSON.stringify(data));
       setError({
         message: "",
         show: false,
       });
-      console.log(data);
+      navigate("../main");
     } else if (data.age <= 0 || data.height <= 0 || data.weight <= 0) {
       setError({
         message: "Проверьте правильность введенных данных",
