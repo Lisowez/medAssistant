@@ -1,6 +1,6 @@
 import { useForm } from "react-hook-form";
 import style from "./FirstTestPage.module.css";
-import { useEffect, useLayoutEffect, useState } from "preact/hooks";
+import { useEffect, useState } from "preact/hooks";
 import { useNavigate } from "react-router-dom";
 
 export interface IData {
@@ -19,7 +19,7 @@ export const FirstTestPage = () => {
   const { register, handleSubmit } = useForm({ mode: "onChange" });
   const [name, setName] = useState("");
   const navigate = useNavigate();
-  useLayoutEffect(() => {
+  useEffect(() => {
     const data = localStorage.getItem("user");
     if (data) {
       const name = JSON.parse(data).login;
